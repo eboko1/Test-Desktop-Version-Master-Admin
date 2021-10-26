@@ -20,7 +20,7 @@ var codeNZ =''
 //const idClient ='2697'
 
 
-describe ('Desktop|Dev|UA|CarBook', function(){
+describe ('Test|Desktop|UA|', function(){
   beforeEach('User LogIn ', () => {
     cy.visit(baseUrl)
     cy.get('#login.ant-input').type(Cypress.env('TestLogin'));  
