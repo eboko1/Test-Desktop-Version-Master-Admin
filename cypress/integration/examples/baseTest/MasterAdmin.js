@@ -17,7 +17,7 @@ var second = parseInt(date.getSeconds())+10
 var minute = parseInt(date.getMinutes())+10
 var codeNZ =''
 
-//const idClient ='2697'
+//const idClient ='26932'
 
 
 describe ('Test|Desktop|UA|', function(){
@@ -85,7 +85,7 @@ describe ('Test|Desktop|UA|', function(){
             })
             .then(()=>{
                 cy.log('Номер телефону клієнта');
-                cy.get('.ant-input-number-input').eq(2).type(second+'0'+minute+''+second+''+minute)
+                cy.get('.ant-input-number-input').eq(3).type(second+'0'+minute+''+second+''+minute)
             })
             .then(()=>{
                 cy.log('Додавання АВТО');
@@ -878,18 +878,22 @@ it('21. Додавання нового Товару з НЗ в Довідник
         cy.log('Вкладка Роботи');
         cy.get('.ant-tabs-nav > :nth-child(1) > :nth-child(3)').click();
     })
-    .then(()=>{
+    if (condition) {
+        
+    } else {
         cy.wait(1000);
         cy.get(':nth-child(1) > [title="Швидке редагування"] > div').first().click({force: true})
-        cy.wait(1000);
-    })
-    .then(()=>{
-        cy.log('Закупочна ціна');
-        cy.get(':nth-child(4) > .ant-input-number > .ant-input-number-input-wrap > .ant-input-number-input').clear().type('88');
-        cy.wait(1000);
-        cy.get('.ant-btn-primary').last().click({force: true})
-        cy.wait(1000);
-    })
+        cy.wait(1000)
+            .then(()=>{
+                cy.log('Закупочна ціна');
+                cy.get(':nth-child(4) > .ant-input-number > .ant-input-number-input-wrap > .ant-input-number-input').clear().type('88');
+                cy.wait(1000);
+                cy.get('.ant-btn-primary').last().click({force: true})
+                cy.wait(1000);
+            })
+    }
+   
+  
 })
 
 it('26. Редагування Закупочної ціни / ПД Схвалено в табці Запчастини', function(){
@@ -905,10 +909,10 @@ it('26. Редагування Закупочної ціни / ПД Схвале
         })
         .then(()=>{
             cy.log('Вкладка Запчастини');
-            cy.get('.ant-tabs-nav > :nth-child(1) > :nth-child(4)').click();
+            cy.get('.ant-tabs-nav > :nth-child(1) > :nth-child(4)').first().click({force: true});
             cy.wait(1000);
             cy.log('Швидке редагування запчастин');
-            cy.get(':nth-child(4) > .ant-btn > div').first().click({force: true});
+            cy.get(':nth-child(4) > .ant-btn > div').eq(2).click({force: true});
             cy.log('Вибір Запису');
             cy.wait(1000);
             cy.get(':nth-child(4) > .ant-input-number > .ant-input-number-input-wrap > .ant-input-number-input').clear().type('88');
